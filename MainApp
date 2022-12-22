@@ -1,0 +1,95 @@
+package basic.dev;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Bai 1");
+		var scanner = new Scanner(System.in);
+		System.out.println("Nhap 3 so nguyen");
+		var a = scanner.nextDouble();
+		var b = scanner.nextDouble();
+		var c = scanner.nextDouble();
+		
+		if (a <= 0 || b <= 0 || c <=0) {
+			System.out.println("ko hop le");
+		}else if((a + b > c) || (b + c > a) && (a + c > b)) {
+			System.out.println("Day la hinh tam giac");
+			
+		}else {
+			System.out.println("Day ko phai hinh tam giac");
+		}
+		System.out.println("..........................");
+
+        System.out.println("Bai 2");
+		
+		int []a1 = new int[10];
+		
+		System.out.println("Cau a");
+		input(a1);
+		print(a1);
+		System.out.println("Cau b");
+		sapXep(a1);
+		print(a1);
+		System.out.println("Cau c");
+		demChanLe(a1);
+
+		}
+
+
+	private static void sapXep(int[] a) {
+		for (int i = 0; i < a.length - 1; i++) {
+			for (int j = i + 1; j < a.length; j++) {
+				if(a[i] > a[j]) {
+					int temp = a[i];
+					a[i] = a[j];
+					a[j] = temp;
+				}
+			}
+		}
+		System.out.println("Mang sau khi xap xep theo gia tri tang dan la  ");
+		
+	}
+
+	
+
+	private static void print(int[] a) {
+//		System.out.println("Mang a");
+		for (int i = 0; i < a.length; i++) {
+			System.out.format("%d ",a[i]).print("\t");
+		}
+		System.out.println();
+	}
+
+	private static void input(int[] a) {
+		int min = 1;
+		int max = 100;
+		for (int i = 0; i < a.length; i++) {
+			a[i] = ramdomInteger(min, max);
+		}
+		
+	}
+	private static void demChanLe(int[] a) {
+		int demChan = 0;
+		for (int i = 0; i < a.length; i++) {
+			if(a[i] % 2 == 0)
+				demChan++;
+		}
+		System.out.format("Mang co %d so chan ,%d so le ", demChan,a.length - demChan);
+	}
+
+	private static int ramdomInteger(int min, int max) {
+		Random rand = new Random();
+		return rand.nextInt(max + 1 - min)+min;
+	}
+	static boolean isPrimary(int n) {
+		if(n == 1|| n == 2)return true;
+		for (int i = 2; i <n; i++) {
+			if(n % i == 0 )return false;
+		}
+		return true;
+	}
+}
